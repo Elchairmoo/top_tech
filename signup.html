@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Top Tech - Your Tech Destination</title>
+    <title>Top Tech - Sign Up</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -22,14 +22,14 @@
           </ul>
         </div>
         <div class="search">
-          <input class="srch" type="search" name="" placeholder="Type Here" />
-          <a href="#"><button class="btn">Search</button></a>
+          <input class="srch" type="search" placeholder="Type Here" />
+          <button class="btn">Search</button>
         </div>
       </div>
+
       <div class="content">
         <h1>LEVEL UP<br /><span>YOUR</span><br /><em>TECH GAME</em></h1>
         <p class="par">
-          <!-- about top tech -->
           Top Tech is a leading provider of innovative technology solutions.
           <br />
           Our team of experts is dedicated to delivering cutting-edge products
@@ -44,17 +44,16 @@
         <div class="form">
           <h2>Sign Up Here</h2>
           <input type="email" name="email" placeholder="Enter Email Here" />
-          <input type="password" name="" placeholder="Enter Password" />
-          <button class="btnn"><a href="home.html">Sign Up</a></button>
+          <input type="password" name="password" placeholder="Enter Password" />
+          <button class="btnn">Sign Up</button>
 
           <p class="link">
-            Already have account
-            <br />
-            <a href="login.html">Login </a> here
+            Already have an account?<br />
+            <a href="index.html">Login</a> here
           </p>
           <p class="liw">Sign up with</p>
 
-          <div class="icon">
+          <div class="social-icons">
             <a href="https://www.facebook.com/"
               ><ion-icon name="logo-facebook"></ion-icon
             ></a>
@@ -74,15 +73,18 @@
         </div>
       </div>
     </div>
+
+    <!-- Ionicons Scripts -->
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"
     ></script>
     <script
-      nomodule=""
+      nomodule
       src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"
     ></script>
-    <script src="script1.js"></script>
+
+    <!-- Signup Script -->
     <script>
       document.querySelector(".btnn").addEventListener("click", function (e) {
         e.preventDefault();
@@ -98,5 +100,6 @@
         }
       });
     </script>
+    <script src="script1.js"></script>
   </body>
 </html>
