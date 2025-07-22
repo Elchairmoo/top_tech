@@ -181,6 +181,9 @@ function changeNavOnScroll() {
   }
 }
 
+localStorage.removeItem("cart");
+
+
 window.addEventListener('scroll', changeNavOnScroll);
 changeNavOnScroll();
 
