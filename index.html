@@ -6,6 +6,16 @@
     <title>Top Tech - Your Tech Destination</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+  <!-- ✅ Correct Ionicons CDN -->
+  <script
+    type="module"
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+  ></script>
+  <script
+    nomodule
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+  ></script>
+
   <body>
     <div class="main">
       <div class="navbar">
@@ -14,9 +24,9 @@
         </div>
         <div class="menu">
           <ul>
-            <li><a href="home.html">HOME</a></li>
+            <li class="homes"><a href="home.html">HOME</a></li>
             <li><a href="#">PRODUCTS</a></li>
-            <li><a href="categories.html">CATEGORIES</a></li>
+            <li class="catego"><a href="categories.html">CATEGORIES</a></li>
             <li><a href="#">ABOUT</a></li>
             <li><a href="#">TESTIMONIALS</a></li>
             <li><a href="#">CONTACT</a></li>
@@ -42,7 +52,10 @@
           and provide our customers with the best possible solutions.
         </p>
         <button class="cn">
-          <a href="https://wa.me/+233207415469">JOIN US</a>
+          <a
+            href="https://wa.me/+233207415469?text=Hi%20I'm%20Interested%20in%20your%20products"
+            >JOIN US</a
+          >
         </button>
 
         <div class="form">
@@ -75,23 +88,23 @@
             ></a>
           </div>
 
-          <div class="social-icons">
+          <!-- <div class="social-icons">
             <a href="https://www.facebook.com/"
-              ><ion-social-icons name="logo-facebook"></ion-social-icons
+              ><ion-icon name="logo-facebook"></ion-icon
             ></a>
             <a href="https://www.instagram.com/accounts/login/?hl=en"
-              ><ion-social-icons name="logo-instagram"></ion-social-icons
+              ><ion-icon name="logo-instagram"></ion-icon
             ></a>
             <a href="https://twitter.com/login?"
-              ><ion-social-icons name="logo-twitter"></ion-social-icons
+              ><ion-icon name="logo-twitter"></ion-icon
             ></a>
             <a href="https://accounts.google.com.gh/"
-              ><ion-social-icons name="logo-google"></ion-social-icons
+              ><ion-icon name="logo-google"></ion-icon
             ></a>
             <a href="https://www.linkedin.com/login"
-              ><ion-social-icons name="logo-linkedin"></ion-social-icons
+              ><ion-icon name="logo-linkedin"></ion-icon
             ></a>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -105,6 +118,7 @@
     ></script>
     <script src="script.js"></script>
     <script src="script1.js"></script>
+    <script src="cart.js"></script>
     <script>
       document.querySelector(".btnn").addEventListener("click", function (e) {
         e.preventDefault();
@@ -113,10 +127,40 @@
 
         if (email && password) {
           localStorage.setItem("isLoggedIn", "true");
-          alert("Login successful!");
+
           window.location.href = "home.html";
         } else {
           alert("Please enter your email and password.");
+        }
+      });
+    </script>
+    <script>
+      document.querySelector(".homes").addEventListener("click", function (e) {
+        e.preventDefault();
+        const email = document.querySelector('input[type="email"]').value;
+        const password = document.querySelector('input[type="password"]').value;
+
+        if (email && password) {
+          localStorage.setItem("isLoggedIn", "true");
+          alert("Sign-up successful!");
+          window.location.href = "home.html";
+        } else {
+          alert("Please login or sign up first.");
+        }
+      });
+    </script>
+    <script>
+      document.querySelector(".catego").addEventListener("click", function (e) {
+        e.preventDefault();
+        const email = document.querySelector('input[type="email"]').value;
+        const password = document.querySelector('input[type="password"]').value;
+
+        if (email && password) {
+          localStorage.setItem("isLoggedIn", "true");
+          alert("Sign-up successful!");
+          window.location.href = "home.html";
+        } else {
+          alert("Please login or sign up first.");
         }
       });
     </script>

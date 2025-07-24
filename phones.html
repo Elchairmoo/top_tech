@@ -145,7 +145,9 @@
                   </p>
                   <p class="price">$999</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -165,7 +167,9 @@
                   </p>
                   <p class="price">$999</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -185,7 +189,9 @@
                   </p>
                   <p class="price">$999</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -205,7 +211,9 @@
                   </p>
                   <p class="price">$999</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -225,7 +233,9 @@
                   </p>
                   <p class="price">$999</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -245,7 +255,9 @@
                   </p>
                   <p class="price">$999</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -261,7 +273,9 @@
                   </p>
                   <p class="price">$999</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -281,7 +295,9 @@
                   </p>
                   <p class="price">$999</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -300,7 +316,9 @@
                   </p>
                   <p class="price">$999</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -348,7 +366,9 @@
                   </p>
                   <p class="price">$999</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -396,7 +416,7 @@
               <li><a href="wearables.html">Smartwatches</a></li>
               <li><a href="audio.html">Audio Devices</a></li>
               <li><a href="accessories.html">Accessories</a></li>
-              <li><a href="#">Smart Home</a></li>
+              <li><a href="smarthome.html">Smart Home</a></li>
             </ul>
           </div>
 
@@ -433,15 +453,17 @@
       crossorigin="anonymous"
     ></script>
     <script src="script.js"></script>
+    <script src="cart.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".add-to-cart").forEach((button) => {
           button.addEventListener("click", () => {
             const card = button.closest(".product-card");
-            const name = card.querySelector(".product-name").textContent;
+            const name = card.querySelector(".card-title").textContent;
             const price = parseFloat(
-              card.querySelector(".product-price").textContent.replace("$", "")
+              card.querySelector(".price").textContent.replace("$", "")
             );
+
             const image = card.querySelector("img").getAttribute("src");
 
             const product = {

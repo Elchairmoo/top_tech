@@ -29,11 +29,19 @@
     <div class="container my-4">
       <h2 class="mb-4">Your Shopping Cart</h2>
       <div id="cart-items"></div>
+
       <div class="cart-summary">Total: <span id="cart-total">$0.00</span></div>
-      <div class="text-end mt-3">
-        <button class="btn btn-success" onclick="checkout()">Checkout</button>
+
+      <div class="d-flex justify-content-between mt-4">
+        <a href="home.html" class="btn btn-outline-secondary"
+          >Continue Shopping</a
+        >
+        <button class="btn btn-success" onclick="checkout()">
+          Proceed to Checkout
+        </button>
       </div>
     </div>
+    <script src="cart.js"></script>
 
     <script>
       function loadCartItems() {
@@ -47,6 +55,7 @@
         if (cart.length === 0) {
           cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
           cartTotalElement.textContent = "$0.00";
+          updateCartCountDisplay();
           return;
         }
 
@@ -58,26 +67,32 @@
           cartItem.className = "cart-item row align-items-center";
 
           cartItem.innerHTML = `
-          <div class="col-md-2">
-            <img src="${item.image}" alt="${item.name}" class="img-fluid">
-          </div>
-          <div class="col-md-3">
-            <h6>${item.name}</h6>
-            <p>$${item.price.toFixed(2)}</p>
-          </div>
-          <div class="col-md-4">
-            <button onclick="updateQuantity(${index}, -1)" class="btn btn-sm btn-danger">-</button>
-            <span class="mx-2">${item.quantity}</span>
-            <button onclick="updateQuantity(${index}, 1)" class="btn btn-sm btn-success">+</button>
-          </div>
-          <div class="col-md-3 text-end fw-bold">
-            $${itemTotal.toFixed(2)}
-          </div>
-        `;
+            <div class="col-md-2">
+              <img src="${item.image}" alt="${item.name}" class="img-fluid" />
+            </div>
+            <div class="col-md-3">
+              <h6>${item.name}</h6>
+              <p>$${item.price.toFixed(2)}</p>
+            </div>
+            <div class="col-md-4">
+              <button onclick="updateQuantity(${index}, -1)" class="btn btn-sm btn-danger">-</button>
+              <span class="mx-2">${item.quantity}</span>
+              <button onclick="updateQuantity(${index}, 1)" class="btn btn-sm btn-success">+</button>
+            </div>
+            <div class="col-md-2 fw-bold">
+              $${itemTotal.toFixed(2)}
+            </div>
+            <div class="col-md-1 text-end">
+              <button class="btn btn-sm btn-outline-danger" onclick="removeItem(${index})">
+                🗑
+              </button>
+            </div>
+          `;
           cartItemsContainer.appendChild(cartItem);
         });
 
         cartTotalElement.textContent = "$" + total.toFixed(2);
+        updateCartCountDisplay();
       }
 
       function updateQuantity(index, delta) {
@@ -90,10 +105,26 @@
         loadCartItems();
       }
 
+      function removeItem(index) {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        loadCartItems();
+      }
+
       function checkout() {
         alert("Order processed successfully!");
         localStorage.removeItem("cart");
         loadCartItems();
+      }
+
+      function updateCartCountDisplay() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const count = cart.reduce((total, item) => total + item.quantity, 0);
+        const cartCountElement = document.getElementById("cartCount");
+        if (cartCountElement) {
+          cartCountElement.textContent = count;
+        }
       }
     </script>
   </body>

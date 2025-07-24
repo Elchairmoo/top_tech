@@ -181,7 +181,7 @@ function changeNavOnScroll() {
   }
 }
 
-localStorage.removeItem("cart");
+// localStorage.removeItem("cart");
 
 
 window.addEventListener('scroll', changeNavOnScroll);

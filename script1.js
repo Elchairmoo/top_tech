@@ -9,7 +9,7 @@ document.querySelector(".btnn").addEventListener("click", function (e) {
         alert("Login successful!");
         window.location.href = "home.html";
     } else {
-        alert("Please enter both email and password.");
+
     }
 });
 

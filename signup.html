@@ -14,7 +14,7 @@
         </div>
         <div class="menu">
           <ul>
-            <li><a href="home.html">HOME</a></li>
+            <li class="home"><a href="home.html">HOME</a></li>
             <li><a href="#">ABOUT</a></li>
             <li><a href="#">SERVICE</a></li>
             <li><a href="#">DESIGN</a></li>
@@ -39,7 +39,12 @@
           ahead of the curve <br />
           and provide our customers with the best possible solutions.
         </p>
-        <button class="cn"><a href="#">JOIN US</a></button>
+        <button class="cn">
+          <a
+            href="https://wa.me/+233207415469?text=Hi%20I'm%20Interested%20in%20your%20products"
+            >JOIN US</a
+          >
+        </button>
 
         <div class="form">
           <h2>Sign Up Here</h2>
@@ -100,6 +105,22 @@
         }
       });
     </script>
+    <script>
+      document.querySelector(".home").addEventListener("click", function (e) {
+        e.preventDefault();
+        const email = document.querySelector('input[type="email"]').value;
+        const password = document.querySelector('input[type="password"]').value;
+
+        if (email && password) {
+          localStorage.setItem("isLoggedIn", "true");
+          alert("Sign-up successful!");
+          window.location.href = "home.html";
+        } else {
+          alert("Please enter your email and password.");
+        }
+      });
+    </script>
     <script src="script1.js"></script>
+    <script src="cart.js"></script>
   </body>
 </html>

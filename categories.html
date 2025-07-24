@@ -53,22 +53,22 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#products">Products</a>
+              <a class="nav-link" href="home.html">Products</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#categories">Categories</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
+              <a class="nav-link" href="home.html">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#testimonials">Testimonials</a>
+              <a class="nav-link" href="home.html">Testimonials</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#footer">Contact</a>
             </li>
             <li class="nav-item ms-lg-3">
-              <a class="btn btn-primary" href="#products">Shop Now</a>
+              <a class="btn btn-primary" href="home.html">Shop Now</a>
             </li>
             <li class="nav-item ms-lg-3 position-relative">
               <a
@@ -231,5 +231,43 @@
       crossorigin="anonymous"
     ></script>
     <script src="script.js"></script>
+    <script src="cart.js"></script>
+
+    <script>
+      // Set current year in footer
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+
+      // Initialize cart count on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        updateCartCountDisplay();
+
+        // Add event listeners to all "Buy Now" buttons
+        const addToCartButtons = document.querySelectorAll(".add-to-cart");
+        addToCartButtons.forEach((button) => {
+          button.addEventListener("click", function (e) {
+            // e.preventDefault();
+
+            const product = {
+              name: this.getAttribute("data-name"),
+              price: parseFloat(this.getAttribute("data-price")),
+              image: this.getAttribute("data-image") || "images/default.jpg",
+            };
+
+            addToCart(product);
+          });
+        });
+      });
+
+      // Function to update cart count display
+      function updateCartCountDisplay() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const count = cart.reduce((total, item) => total + item.quantity, 0);
+        const cartCountElement = document.getElementById("cartCount");
+        if (cartCountElement) {
+          cartCountElement.textContent = count;
+        }
+      }
+    </script>
   </body>
 </html>

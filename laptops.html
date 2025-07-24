@@ -118,7 +118,9 @@
                   </p>
                   <p class="price">$1499</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -137,7 +139,9 @@
                   </p>
                   <p class="price">$1499</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -156,7 +160,9 @@
                   </p>
                   <p class="price">$1499</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -175,7 +181,9 @@
                   </p>
                   <p class="price">$1499</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -194,7 +202,9 @@
                   </p>
                   <p class="price">$1499</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -213,7 +223,9 @@
                   </p>
                   <p class="price">$1499</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -232,7 +244,9 @@
                   </p>
                   <p class="price">$1499</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -251,7 +265,9 @@
                   </p>
                   <p class="price">$1499</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -270,7 +286,9 @@
                   </p>
                   <p class="price">$1499</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -289,7 +307,9 @@
                   </p>
                   <p class="price">$1499</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -308,7 +328,9 @@
                   </p>
                   <p class="price">$1499</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -327,7 +349,9 @@
                   </p>
                   <p class="price">$1499</p>
                 </div>
-                <a href="#" class="btn btn-secondary mt-auto">Add to Cart</a>
+                <a href="#" class="btn btn-secondary mt-auto add-to-cart"
+                  >Add to Cart</a
+                >
               </div>
             </div>
           </div>
@@ -412,27 +436,49 @@
       crossorigin="anonymous"
     ></script>
     <script src="script.js"></script>
+    <script src="cart.js"></script>
     <script>
-      // Call on page load to update cart count in navbar
-      document.addEventListener("DOMContentLoaded", updateCartCountDisplay);
-
-      // Add to cart logic for "Add to Cart" buttons on this page
-      document
-        .querySelectorAll(".product-card .btn-secondary")
-        .forEach((button) => {
-          button.addEventListener("click", (event) => {
-            event.preventDefault(); // Prevent default link behavior
-
-            const productCard = event.target.closest(".product-card");
-            const productName =
-              productCard.querySelector(".card-title").textContent;
-            const productPrice = parseFloat(
-              productCard.querySelector(".price").textContent.replace(" ")
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".add-to-cart").forEach((button) => {
+          button.addEventListener("click", () => {
+            const card = button.closest(".product-card");
+            const name = card.querySelector(".card-title").textContent;
+            const price = parseFloat(
+              card.querySelector(".price").textContent.replace("$", "")
             );
 
-            addToCart(productName, productPrice);
+            const image = card.querySelector("img").getAttribute("src");
+
+            const product = {
+              id: name + price, // Unique ID
+              name,
+              price,
+              image,
+            };
+
+            addToCart(product);
           });
         });
+      });
+
+      function addToCart(product) {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const index = cart.findIndex((item) => item.id === product.id);
+        if (index !== -1) {
+          cart[index].quantity += 1;
+        } else {
+          cart.push({ ...product, quantity: 1 });
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(`${product.name} added to cart!`);
+        updateCartCount();
+      }
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const count = cart.reduce((total, item) => total + item.quantity, 0);
+        document.getElementById("cartCount").textContent = count;
+      }
+      updateCartCount();
     </script>
   </body>
 </html>
