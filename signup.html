@@ -12,7 +12,10 @@
         <div class="icon">
           <h2 class="logo">TOP TECH</h2>
         </div>
-        <div class="menu">
+        <div class="menu-toggle" id="menu-toggle">
+          <ion-icon name="menu-outline"></ion-icon>
+        </div>
+        <div class="menu" id="menu">
           <ul>
             <li class="home"><a href="home.html">HOME</a></li>
             <li><a href="#">ABOUT</a></li>
@@ -122,5 +125,13 @@
     </script>
     <script src="script1.js"></script>
     <script src="cart.js"></script>
+    <script>
+      const toggle = document.getElementById("menu-toggle");
+      const menu = document.getElementById("menu");
+
+      toggle.addEventListener("click", () => {
+        menu.classList.toggle("show");
+      });
+    </script>
   </body>
 </html>
