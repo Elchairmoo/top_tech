@@ -59,12 +59,14 @@ function showToast() {
 // --- Testimonial Slider ---
 const testimonials = [
   {
-    img: 'https://images.unsplash.com/photo-1642364861013-2c33f2dcfbcf',
+    // add image from folder
+
+    img: 'images/wani.jpg',
     quote: 'Amazing selection and fast shipping! Found exactly what I needed for my new setup.',
     author: 'Alex Johnson',
   },
   {
-    img: 'https://images.unsplash.com/photo-1659353220441-9207b962a133',
+    img: 'images/ice.jpg',
     quote: 'The customer service was top-notch. They helped me choose the perfect laptop.',
     author: 'Maria Garcia',
   },
