@@ -63,22 +63,22 @@ const testimonials = [
 
     img: 'images/wani.jpg',
     quote: 'Amazing selection and fast shipping! Found exactly what I needed for my new setup.',
-    author: 'Alex Johnson',
+    author: 'Amg Wani',
   },
   {
     img: 'images/ice.jpg',
     quote: 'The customer service was top-notch. They helped me choose the perfect laptop.',
-    author: 'Maria Garcia',
+    author: 'Amg Ice',
   },
   {
-    img: 'https://images.unsplash.com/photo-1733796941440-9935f13a1cec',
+    img: 'images/snoop.jpg',
     quote: 'Great prices and the quality of the smartwatch exceeded my expectations. Highly recommend!',
-    author: 'David Smith',
+    author: 'Amg Snoop',
   },
   {
-    img: 'https://images.unsplash.com/photo-1700832161143-de261675534b',
+    img: 'images/sthayapps.jpg',
     quote: 'Top Tech is my go-to for tech gadgets. Always reliable and great deals.',
-    author: 'Sam Lee',
+    author: 'Sthay Apps',
   },
 ];
 
